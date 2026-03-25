@@ -12,6 +12,9 @@ namespace Pre.AsyncDemo.Cons
             Console.WriteLine("Create a large file!");
             await fileService.CreateLargeFile();
             Console.WriteLine("file created");
+            
+            //showing animation while waiting on a async operation
+            //var task = fileService.CreateLargeFile();
             //while(!task.IsCompleted)
             //{
             //    //do something.
