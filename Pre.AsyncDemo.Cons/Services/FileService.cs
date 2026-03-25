@@ -8,10 +8,10 @@ namespace Pre.AsyncDemo.Cons.Services
 {
     public class FileService
     {
-        public void CreateLargeFile()
+        public async Task CreateLargeFile()
         {
             //create a large file 1Gb on the desktop
-            long filesize = 1024 * 1024 * 1024; //1Gb
+            long filesize = (1024 * 1024 * 1024); //1Gb
             long chunkSize = 1024 * 1024; //1Mb
             long bytesWritten = 0;
             byte[] randomBytes = new byte[chunkSize];
@@ -28,9 +28,10 @@ namespace Pre.AsyncDemo.Cons.Services
                     //generate random byte[]
                     random.NextBytes(randomBytes);
                     //write to file
-                    fileStream.Write(randomBytes);
+                    await fileStream.WriteAsync(randomBytes);
                     bytesWritten += chunkSize;
                 }
+                Console.WriteLine("Creating file");
             }
         }
     }
